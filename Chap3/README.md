@@ -45,7 +45,7 @@ In this example, you can see that:
     + `-d`, `--disassamble`: Display assembler contents of executable sections.
     + `-D`, `--disassemble-all`:Display assembler contents of all sections
 
-![content](/img/content_hex.png)
+![content](img/content_hex.png)
 ![disassamble](img/disassamble.png)
 
 **Note**: you can use `__attribute__((section("name")))` to write data to user-defined section in the object file.
