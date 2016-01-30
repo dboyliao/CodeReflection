@@ -50,3 +50,35 @@ In this example, you can see that:
 
 **Note**: you can use `__attribute__((section("name")))` to write data to user-defined section in the object file.
 
+## Weak and Strong Symbol
+
+Once we have all these object files, we get to the final step of compilation, linking (we will see more detailed discussion in later chapters). In the linking phase, linker will use the reference information in the object files (Symbol Table) to link every object files together. However, it is commonly seen that we may define duplicate variable in different object files. What would linker deal with these duplicate variables? This leads to the idea of *weak** and **strong** symbols.
+
+Basically, whether a symbol would be strong or week depends on the language implementation (C/C++ by default will make functions and initialized global variables strong symbols, uninitialized global variable weak symbols). 
+
+For `gcc`, we can use `__attribute__((weak))` to make one symbol a weak symbol.
+Here is the sample code:
+
+```{c}
+extern int ext;
+
+int weak;
+int strong = 1;
+__attribute__((weak)) weak2 = 2;
+
+int main(){
+    return 0;
+}
+```
+
+- `ext`: A external variable. It is not strong nor weak symbol. the `extern` keyword just states that its reference is to other exteranl object files.
+- `weak`, `weak2`: these are weak symbols. `weak` is global *uninitialized* variable. `weak2` is weak since force assignment by `__attribute__((weak))`.
+- `strong`, `main`: strong symbols.
+
+The rules linker use to deal with strong and weak symbols:
+
+1. Mutiple declaration for single strong symbol is not allowed.
+2. If one symbol is declared as strong symbol in one object file but weak in the other object files, the strong one is choosen.
+3. If one symbol is declared as weak in all object files, then the one which occupies the largest memory size will be choosen.
+
+One use case for `__attribute__((weak))` is that you can design different version of code depending on the libraries available. For example, you can build multi-threaded executable when `pthread` library is available but single-threaded when it is not available. See `Thread.c` for detail.
