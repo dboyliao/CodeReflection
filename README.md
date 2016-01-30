@@ -13,9 +13,11 @@ This repo contains all the notes I write for this [book](http://www.books.com.tw
 
 Once you enter something like `gcc ...`, `gcc` will call these function in order to generate one executable on your computer:
 
-1. `cpp`/`clang`: preprocesser, for extending macro or any preprocessing instructions. (`gcc -E`)
+1. `cpp`/`clang`: preprocesser, for expanding macro or any preprocessing instructions. (You can use `gcc -E` to see the expanded file)
 2. `cc1`: complilation backend command, for generating assembly codes.
 3. `as`: assembler, for generating object files.
 4. `ld`: linker, linking all object files to one executable.
+
+![compilation](img/compile.png)
 
 
