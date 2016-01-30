@@ -2,6 +2,13 @@
 
 This repo contains all the notes I write for this [book](http://www.books.com.tw/products/0010456858).
 
+## Table of Content
+
+- Chap 1: Introduction
+- Chap 2: Introduction on Compile and Link
+- Chap 3: Object Files - Revealed
+- Chap 4: Static Linking
+
 ## `gcc` Flags
 
 - `-E`: Only run the preprocessor.
