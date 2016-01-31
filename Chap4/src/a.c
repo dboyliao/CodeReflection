@@ -7,7 +7,7 @@ int main(void) {
 
     int a = 100;
 
-    printf("[Before swap]: a = %d, shared = %d\n", a, shared);
+    // printf("[Before swap]: a = %d, shared = %d\n", a, shared);
     swap(&a, &shared);
-    printf("[After swap]: a = %d, shared = %d\n", a, shared);
+    // printf("[After swap]: a = %d, shared = %d\n", a, shared);
 }
